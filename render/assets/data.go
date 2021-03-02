@@ -58,6 +58,7 @@ var _bindata = map[string]func() ([]byte, error){
 	"locales/active.cy.toml": locales_active_cy_toml,
 	"locales/active.en.toml": locales_active_en_toml,
 }
+
 // AssetDir returns the file names below a certain
 // directory embedded in the file by go-bindata.
 // For example if you run go-bindata on data/... and data contains the
@@ -94,14 +95,13 @@ func AssetDir(name string) ([]string, error) {
 }
 
 type _bintree_t struct {
-	Func func() ([]byte, error)
+	Func     func() ([]byte, error)
 	Children map[string]*_bintree_t
 }
+
 var _bintree = &_bintree_t{nil, map[string]*_bintree_t{
 	"locales": &_bintree_t{nil, map[string]*_bintree_t{
-		"active.cy.toml": &_bintree_t{locales_active_cy_toml, map[string]*_bintree_t{
-		}},
-		"active.en.toml": &_bintree_t{locales_active_en_toml, map[string]*_bintree_t{
-		}},
+		"active.cy.toml": &_bintree_t{locales_active_cy_toml, map[string]*_bintree_t{}},
+		"active.en.toml": &_bintree_t{locales_active_en_toml, map[string]*_bintree_t{}},
 	}},
 }}

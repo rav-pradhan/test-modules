@@ -24,6 +24,8 @@ func New(assetsPath, siteDomain string) *Render {
 			Layout: "main",
 			Funcs:  []template.FuncMap{registeredFuncs},
 		}),
+		hMutex: &sync.Mutex{},
+		jMutex: &sync.Mutex{},
 	}
 }
 
