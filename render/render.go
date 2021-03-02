@@ -8,6 +8,7 @@ import (
 
 	"github.com/ONSdigital/dp-frontend-models/model"
 	"github.com/ONSdigital/log.go/log"
+	"github.com/eldeal/test-modules/render/assets"
 	"github.com/unrolled/render"
 	unrolled "github.com/unrolled/render"
 )
@@ -21,8 +22,10 @@ type Render struct {
 func New(assetsPath, siteDomain string) *Render {
 	return &Render{
 		client: unrolled.New(render.Options{
-			Layout: "main",
-			Funcs:  []template.FuncMap{registeredFuncs},
+			Asset:      assets.Asset,
+			AssetNames: assets.AssetNames,
+			Layout:     "main",
+			Funcs:      []template.FuncMap{registeredFuncs},
 		}),
 		hMutex: &sync.Mutex{},
 		jMutex: &sync.Mutex{},

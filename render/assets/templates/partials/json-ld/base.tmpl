@@ -1,0 +1,8 @@
+{{$PageData := .}}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        {{ if eq $PageData.Page.Type "homepage" }}{{template "partials/json-ld/homepage" .}}{{end}}
+        {{ if hasField $PageData "DatasetLandingPage" }}{{ template "partials/json-ld/dataset/common" . }}{{ end }}
+    }
+</script>

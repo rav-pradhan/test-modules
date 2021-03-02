@@ -1,0 +1,20 @@
+{{ $data := .DatasetLandingPage }}
+{{ $URLPath := .URI }}
+{{ $SiteDomain := .SiteDomain }}
+{{ $SubDomain := "https://www."}}
+{{ if eq .Language "cy"}}{{$SubDomain = "https://cy."}}{{end}}
+    {{ $length := len $data.Datasets }}{{ if gt $length 0 }}
+        {{ $latestDataset := index $data.Datasets 0}}
+        {{ $numberOfDownloads := len $latestDataset.Downloads }}
+        "distribution": [
+        {{ range $i, $el := $latestDataset.Downloads }} {
+            "@type": "DataDownload",
+            "encodingFormat": {{ .Extension }},
+            "contentUrl": {{concatenateStrings $SubDomain $SiteDomain "/file?uri=" $URLPath "/current/" .URI }}
+            }{{ if notLastItem $numberOfDownloads $i }},{{end}}
+        {{ end }}
+    ],
+    {{ end }}
+    "url": {{ concatenateStrings $SubDomain .SiteDomain $URLPath }},
+    "datePublished": {{ $data.ReleaseDate }},
+    "description": {{ .Metadata.Description }}

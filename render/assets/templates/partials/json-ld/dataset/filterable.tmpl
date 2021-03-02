@@ -1,0 +1,19 @@
+{{ $data := .DatasetLandingPage }}
+{{ $URLPath := .URI }}
+{{ $length := len $data.Version.Downloads }}
+{{ $SiteDomain := .SiteDomain }}
+{{ $SubDomain := "https://www."}}
+{{ if eq .Language "cy"}}{{$SubDomain = "https://cy."}}{{end}}
+{{ if gt $length 0 }}
+    "distribution": [
+        {{ range $i, $el := $data.Version.Downloads }} {
+            "@type": "DataDownload",
+            "encodingFormat": {{ .Extension }},
+            "contentUrl":{{if eq .Extension "txt"}}{{concatenateStrings $SubDomain $SiteDomain .URI }}{{else}}{{concatenateStrings .URI}}{{end}}
+            }{{if notLastItem $length $i }},{{end}}
+        {{ end }}
+        ],
+{{ end }}
+"url": {{ concatenateStrings $SubDomain .SiteDomain "/datasets/" .DatasetId "/editions/" $data.Version.Edition "/versions/" $data.Version.Version  }},
+"datePublished": {{ .ReleaseDate }},
+"description": {{ $data.Version.Description }}

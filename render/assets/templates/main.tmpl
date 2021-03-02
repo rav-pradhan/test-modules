@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{if .Language }}{{ .Language }}{{ else }}en{{ end }}" xml:lang="{{ if .Language }}{{ .Language }}{{ else }}en{{ end }}">
+<head>
+
+    <title>{{ if .Metadata.Title -}}{{ .Metadata.Title }}
+      {{ else if .Error -}}{{if .Error.Title }}{{ .Error.Title }}{{- end }}
+      {{- end}} - {{ localise "OfficeForNationalStatistics" .Language 1 }}</title>
+    {{if eq .Metadata.Title "Home"}}<meta name="description" content="{{ localise "HomepageDescription" .Language 1 }}">{{else}}<meta name="description" content="{{ .Metadata.Description}}">{{end}}
+    <meta charset="utf-8"/>
+    <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#58595B">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
+    {{ if .Metadata.ServiceName }}<meta name="ons:service" content="{{ .Metadata.ServiceName}}">{{ end }}
+    <link rel="stylesheet" href="{{.PatternLibraryAssetsPath}}/css/main.css">
+    {{ if .HasJSONLD -}}{{ template "partials/json-ld/base" . }}{{- end }}
+
+    {{if eq .Metadata.Title "Feedback"}}
+      <link rel="canonical" href={{ concatenateStrings "https://www." .SiteDomain "/feedback" }}>
+    {{ end }}
+
+    {{ template "partials/gtm-data-layer" . }}
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MBCBVQS');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body class="{{ .Type }}">
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js' : 'js');</script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBCBVQS"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    {{ if (ne .FeatureFlags.HideCookieBanner true)}}
+      {{ template "partials/banners/cookies" . }}
+    {{ end }}
+    {{ template "partials/header" . }}
+
+    <main id="main" role="main" tabindex="-1">
+      {{yield}}
+    </main>
+
+    {{ template "partials/footer" . }}
+
+      {{/* TODO - update on live build to use two JS files, not a single one */}}
+    <script type="text/javascript" src="{{.PatternLibraryAssetsPath}}/js/main.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+</body>
+</html>
