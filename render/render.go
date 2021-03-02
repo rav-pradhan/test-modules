@@ -19,6 +19,9 @@ type Render struct {
 	jMutex *sync.Mutex
 }
 
+// TODO: need to find a way of passing in assets from application
+// when this is instantiated so that common assets can be built
+// in the render package and custom assets can still be provided
 func New(assetsPath, siteDomain string) *Render {
 	return &Render{
 		client: unrolled.New(render.Options{
@@ -32,15 +35,9 @@ func New(assetsPath, siteDomain string) *Render {
 	}
 }
 
-//Handler resolves the rendering of a specific pagem with a given model and template name
+//Page resolves the rendering of a specific pagem with a given model and template name
 func (r *Render) Page(w io.Writer, page interface{}, templateName string) {
 	ctx := context.Background()
-
-	// // assert that the struct contains a model.Page common type/fields
-	// if _, ok := page.(model.Page); !ok {
-	// 	log.Event(ctx, "invalid template type - core fields not present", nil, log.ERROR)
-	// 	return
-	// }
 
 	if err := r.HTML(w, 200, templateName, page); err != nil {
 		r.JSON(w, 500, model.ErrorResponse{
