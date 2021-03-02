@@ -1,0 +1,764 @@
+# active.cy.toml
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Notes
+# - Documentation: https://github.com/nicksnyder/go-i18n/blob/master/README.md
+# - Description should be the English version of the text, unless English version is a shorthand e.g. Home button is shorthand in English for Homepage
+# - Arguments can be added via {{.argN}} where N is integer index starting at 0 e.g. {{.arg0}} {{.arg1}}
+# - To inject HTML (Avoid where possible as it is messy) use "| safeHTML" e.g. {{ localise Foo .Language 1 | safeHTML }} where Foo might be "<strong>test</strong>"
+# count - 0 = zero
+# count - 1 = one
+# count - 2 = two; useful for languages with mutations like welsh (radical) 'brother'=brawd, two (soft) 'brothers'=frawd, three or more (nasal) 'brothers'=brodyr
+# count - 3 = few
+# count - 6 = many
+# count - 4 = other; 4,5 & >6
+# Plural rules can be found here: http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Used for tests
+[Foo]
+description = "Used for localisation tests"
+zero = "No Foos (Welsh)"
+one = "One Foo (Welsh)"
+two = "Two Foos (Welsh)"
+few = "Three Foos (Welsh)"
+many = "Six Foos (Welsh)"
+other = "Four, five or more than six but not six Foos (Welsh)"
+
+# Primarily used in header template
+[OfficeForNationalStatistics]
+description = "Office for National Statistics"
+one = "Swyddfa Ystadegau Gwladol"
+
+[Home]
+description = "Homepage"
+one = "Hafan"
+
+[HomepageDescription]
+description = "The UK's largest independent producer of official statistics and the recognised national statistical institute of the UK."
+one = "The UK's largest independent producer of official statistics and the recognised national statistical institute of the UK."
+
+[ONSLogoAlt]
+description = "Office for National Statistics Logo - Homepage"
+one = "Logo Swyddfa Ystadegau Gwladol - Hafan"
+
+[SkipToContent]
+description = "Skip to main content"
+one = "Skip to main content"
+
+[ChangeLanguage]
+description = "Change language"
+one = "Change language"
+
+[WelshToggle]
+description = "Cymraeg (CY)"
+one = "Cymraeg (CY)"
+
+[EnglishToggle]
+description = "English (EN)"
+one = "English (EN)"
+
+[ReleaseCalendar]
+description = "Release calendar"
+one = "Calendar datganiadau"
+
+[Media]
+description = "Media"
+one = "Media"
+
+[About]
+description = "About"
+one = "Amdanom ni"
+
+[Blog]
+description = "Blog"
+one = "Blog"
+
+[Menu]
+description = "Menu"
+one = "Dewislen"
+
+[SubMenu]
+description = "sub menu"
+one = "is-dewislen"
+
+[Search]
+description = "Search"
+one = "Chwilio"
+
+[BusinessIndustryTrade]
+description = "Business, industry and trade"
+one = "Busnes, diwydiant a masnach"
+
+[Business]
+description = "Business"
+one = "Busnes"
+
+[ChangesToBusiness]
+description = "Changes to business"
+one = "Newidiadau i fusnesau"
+
+[ConstructionIndustry]
+description = "Construction industry"
+one = "Diwydiant adeiladu"
+
+[ITInternetIndustry]
+description = "IT and internet industry"
+one = "Y diwydiant TG a'r rhyngrwyd"
+
+[InternationalTrade]
+description = "International trade"
+one = "Masnach ryngwladol"
+
+[ManufacturingProductionIndustry]
+description = "Manufacturing and production industry"
+one = "Y diwydiant gweithgynhyrchu a chynhyrchu"
+
+[RetailIndustry]
+description = "Retail industry"
+one = "Y diwydiant manwethu"
+
+[TourismIndustry]
+description = "Tourism industry"
+one = "Y diwydiant twristiaeth"
+
+[Economy]
+description = "Economy"
+one = "Yr economi"
+
+[EconomicOutputProductivity]
+description = "Economic output and productivity"
+one = "Allgynnyrch economaidd a chynhyrchiant"
+
+[EnvironmentalAccounts]
+description = "Environmental accounts"
+one = "Cyfrifon amgylcheddol"
+
+[GovernmentPublicSectorTaxes]
+description = "Government, public sector and taxes"
+one = "Llwodraeth, y sector cyhoeddus a threthi"
+
+[GrossDomesticProduct]
+description = "Gross Domestic Product (GDP)"
+one = "Cynnyrch Domestig Gros (CDG)"
+
+[GrossDomesticValue]
+description = "Gross Value Added (GVA)"
+one = "Gwerth Ychwanegol Gros"
+
+[InflationPriceIndices]
+description = "Inflation and price indices"
+one = "Mynegeion chwyddiant a phrisiau"
+
+[InvestmentsPensionsTrusts]
+description = "Investments, pensions and trusts"
+one = "Buddsoddiadau, pensiynau ac ymddiriedolaethau"
+
+[NationalAccounts]
+description = "National accounts"
+one = "Cyfrifon gwladol"
+
+[RegionalAccounts]
+description = "Regional accounts"
+one = "Cyfrifon rhanbarthol"
+
+[EmploymentLabourMarket]
+description = "Employment and labour market"
+one = "Cyflogaeth a'r farchnad lafur"
+
+[PeopleInWork]
+description = "People in work"
+one = "Pobl mewn gwaith"
+
+[PeopleNotInWork]
+description = "People not in work"
+one = "Pobl nad ydynt mewn gwaith"
+
+[PeoplePopulationCommunity]
+description = "People, population and community"
+one = "Pobl, y boblogaeth a chymunedau"
+
+[BirthsDeathsMarriages]
+description = "Births, deaths and marriages"
+one = "Genedigaethau, marwolaethau a phriodasau"
+
+[CrimeJustice]
+description = "Crime and justice"
+one = "Troseddu a chyfiawnder"
+
+[CulturalIdentity]
+description = "Cultural identity"
+one = "Hunaniaeth ddiwylliannol"
+
+[EducationChildcare]
+description = "Education and childcare"
+one = "Addysg a gofal plant"
+
+[Elections]
+description = "Elections"
+one = "Etholiadau"
+
+[HealthSocialCare]
+description = "Health and social care"
+one = "Iechyd a gofal cymdeithasol"
+
+[HouseholdCharacteristics]
+description = "Household characteristics"
+one = "Nodweddion aelwydydd"
+
+[Housing]
+description = "Housing"
+one = "Tai"
+
+[LeisureTourism]
+description = "Leisure and tourism"
+one = "Hamdden a thwristiaeth"
+
+[PersonalHouseholdFinances]
+description = "Personal and household finances"
+one = "Cyllid personol a chyllid aelwydydd"
+
+[PopulationMigration]
+description = "Population and migration"
+one = "Poblogaeth ac ymfudo"
+
+[Wellbeing]
+description = "Well-being"
+one = "Lles"
+
+[SurveyTakingPart]
+description = "Taking part in a survey?"
+one = "Cymryd rhan mewn arolwg?"
+
+[SurveyFindOut]
+description = "It's never been more important"
+one = "It's never been more important."
+
+[SearchKeywordTimeSeriesID]
+description = "Search for a keyword(s) or time series ID"
+one = "Chwilio am allweddair neu ID cyfres amser"
+
+[Beta]
+description = "Beta"
+one = "Beta"
+
+[BetaFeedback]
+description = "This is a new way of getting data - your <a href=\"/feedback?service=cmd\">feedback</a> will help us to improve it."
+one = "This is a new way of getting data - your <a href=\"/feedback?service=cmd\">feedback</a> will help us to improve it."
+
+# Primarily used in footer template
+[FooterLinks]
+description = "Footer links"
+one = "Footer links"
+
+[Help]
+description = "Help"
+one = "Cymorth"
+
+[Accessibility]
+description = "Accessibility"
+one = "Hygyrchedd"
+
+[CookiesPrivacy]
+description = "Cookies and privacy"
+one = "Briwsion a phreifatrwydd"
+
+[Cookies]
+description = "Cookies"
+one = "Cookie"
+other = "Cookies"
+
+[Privacy]
+description = "Privacy"
+one = "Privacy"
+
+[TermsConditions]
+description = "Terms and conditions"
+one = "Telerau ac amodau"
+
+[AboutONS]
+description = "About ONS"
+one = "Ynglŷn ag SYG"
+
+[WhatWeDo]
+description = "What we do"
+one = "Beth rydym yn ei wneud"
+
+[Careers]
+description = "Careers"
+one = "Gyrfaoedd"
+
+[ContactUs]
+description = "Contact us"
+one = "Cysylltu â ni"
+
+[News]
+description = "News"
+one = "News"
+
+[FreedomInformation]
+description = "Freedom of Information"
+one = "Rhyddid Gwybodaeth"
+
+[ConnectWithUs]
+description = "Connect with us"
+one = "Cysylltu â ni"
+
+[Twitter]
+description = "Twitter"
+one = "Twitter"
+
+[Facebook]
+description = "Facebook"
+one = "Facebook"
+
+[LinkedIn]
+description = "LinkedIn"
+one = "LinkedIn"
+
+[EmailAlerts]
+description = "Email alerts"
+one = "Rhybuddion ebost"
+
+[OGLFull]
+description = "Open Government Licence v3.0"
+one = "Mae'r holl gynnwys ar gael o dan delerau'r <a class=\"icon--hide\" href=\"http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\" target=\"_blank\">Open Government Licence v3.0</a> <span class=\"icon icon-external--light-small\"></span>, ac eithrio lle y nodir fel arall"
+
+# Primarily used in static dataset landing page
+[Dataset]
+description = "Dataset"
+one = "Set ddata"
+
+[CorrectionsAndNotices]
+description = "Corrections and notices"
+one = "Corrections and notices"
+
+[Notice]
+description = "Notice"
+one = "Notice"
+two = "Notices"
+few = "Notices"
+many = "Notices"
+other = "Notices"
+
+[Correction]
+description = "Correction"
+one = "Correction"
+two = "Corrections"
+few = "Corrections"
+many = "Corrections"
+other = "Corrections"
+
+[Contact]
+description = "Contact:"
+one = "Cyswllt:"
+
+[ReleaseDate]
+description = "Release date:"
+one = "Dyddiad y datganiad:"
+
+[NextRelease]
+description = "Next release:"
+one = "Cyhoeddiad nesaf:"
+
+[TBA]
+description = "To be announced"
+one = "To be announced"
+
+[DatasetID]
+description = "Dataset ID:"
+one = "ID y set ddata:"
+
+[AboutThisDataset]
+description = "About this Dataset"
+one = "About this Dataset"
+
+[TryFilterAndDownload]
+description = "Try the new way to filter and download this data:"
+one = "Try the new way to filter and download this data:"
+
+[EditionsInDataset]
+description = "Editions in the dataset"
+one = "Edition in the dataset"
+two = "Editions in the dataset"
+few = "Editions in the dataset"
+many = "Editions in the dataset"
+other = "Editions in the dataset"
+
+[DownloadInFormatWithSingleTitle]
+description = "Download {{title}} in {{download extension}} format"
+one = "Download {{.arg0}} in {{.arg1}} format"
+
+[DownloadInFormatWithFullTitle]
+description = "Download {{title}}: {{dataset.Title}} in {{download extension}} format"
+one = "Download {{.arg0}}: {{.arg1}} in {{.arg2}} format"
+
+[StructuredText]
+description = "structured text"
+one = "structured text"
+
+[PreviousVersionAvailable]
+description = "Previous versions </a> of this data are available."
+one = "Previous version </a> of this data is available."
+two = "Previous versions </a> of this data are available."
+few = "Previous versions </a> of this data are available."
+many = "Previous versions </a> of this data are available."
+other = "Previous versions </a> of this data are available."
+
+[UsefulSupportingFiles]
+description = "Supporting files you may find useful"
+one = "Supporting files you may find useful"
+
+[NotesAndUsage]
+description = "Important notes and usage information"
+one = "Nodiadau pwysig a gwybodaeth ynghylch defnyddio"
+
+[ViewAllData]
+description = "View all data related to"
+one = "View all data related to"
+
+[DatasetContactDetails]
+description = "Contact details for this dataset"
+one = "Manylion cyswllt ar gyfer y set ddata hon"
+
+[UsedInPublication]
+description = "Publications that use this data"
+one = "Cyhoeddiadau sy'n defnyddio'r data hwn"
+
+[Methodology]
+description = "Methodology"
+one = "Methodoleg"
+
+[RelatedLinks]
+description = "Related links"
+one = "Related links"
+two = "Related links"
+few = "Related links"
+many = "Related links"
+other = "Related links"
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Cookies page
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[CookiesOnONS]
+description = "Cookies on ONS.GOV.UK"
+one = "Cookies on ONS.GOV.UK"
+
+[CookiesP1]
+description = "Cookies are files saved on your phone, tablet or computer when you visit a website."
+one = "Cookies are files saved on your phone, tablet or computer when you visit a website."
+
+[CookiesP2]
+description = "We use cookies to store information about how you use the ons.gov.uk website, such as the pages you visit."
+one = "We use cookies to store information about how you use the ons.gov.uk website, such as the pages you visit."
+
+[CookiesSettings]
+description = "Cookie settings"
+one = "Cookie settings"
+
+[CookiesNoJSWarn1]
+description = "We use JavaScript to set most of our cookies. It appears that JavaScript is not running on your browser, so we are unable to change your cookie settings. To change this you can try:"
+one = "We use JavaScript to set most of our cookies. It appears that JavaScript is not running on your browser, so we are unable to change your cookie settings. To change this you can try:"
+
+[CookiesNoJSWarn2]
+description = "Without JavaScript we will only set cookies that are strictly necessary."
+one = "Without JavaScript we will only set cookies that are strictly necessary."
+
+[CookiesNoJSOpt1]
+description = "reloading the page"
+one = "reloading the page"
+
+[CookiesNoJSOpt2]
+description = "turning on JavaScript in your browser"
+one = "turning on JavaScript in your browser"
+
+[CookiesSettingsP1]
+description = "We use 2 types of cookie. You can choose which cookies you're happy for us to use."
+one = "We use 2 types of cookie. You can choose which cookies you're happy for us to use."
+
+[CookiesUsage]
+description = "Cookies that measure website use"
+one = "Cookies that measure website use"
+
+[CookiesUsageP1]
+description = "We use Google Analytics and Hotjar to measure how you use the website so we can improve it based on user needs. Google Analytics and Hotjar set cookies that store anonymised information about:"
+one = "We use Google Analytics and Hotjar to measure how you use the website so we can improve it based on user needs. Google Analytics and Hotjar set cookies that store anonymised information about:"
+
+[CookiesUsageBP1]
+description = "how you got to the site"
+one = "how you got to the site"
+
+[CookiesUsageBP2]
+description = "the pages you visit on ons.gov.uk and how long you spend on each page"
+one = "the pages you visit on ons.gov.uk and how long you spend on each page"
+
+[CookiesUsageBP3]
+description = "what you click on while you are visiting the site"
+one = "what you click on while you are visiting the site"
+
+[CookiesUsageBP4]
+description = "the way in which you interact with a page"
+one = "the way in which you interact with a page"
+
+[CookiesUsageBP5]
+description = "whether you have participated in a Hotjar survey"
+one = "whether you have participated in a Hotjar survey"
+
+[CookiesUsageP2]
+description = "We do not allow Google or Hotjar to use or share the data about how you use this site."
+one = "We do not allow Google or Hotjar to use or share the data about how you use this site."
+
+[CookiesEssential]
+description = "Strictly necessary cookies"
+one = "Strictly necessary cookies"
+
+[CookiesEssentialP1]
+description = "These essential cookies do things like remember your progress through a form."
+one = "These essential cookies do things like remember your progress through a form."
+
+[CookiesEssentialP2]
+description = "They always need to be on to allow the website to function properly."
+one = "They always need to be on to allow the website to function properly."
+
+[CookiesEssentialP3]
+description = "Find out more about cookies on ons.gov.uk"
+one = "<a href=\"/help/cookies\">Find out more about cookies on ons.gov.uk</a>"
+
+[On]
+description = "On"
+one = "On"
+
+[Off]
+description = "Off"
+one = "Off"
+
+[SaveChanges]
+description = "Save changes"
+one = "Save change"
+two = "Save changes"
+few = "Save changes"
+other = "Save changes"
+
+[CookiesBannerHeading]
+description = "Tell us whether you accept cookies"
+one = "Tell us whether you accept cookies"
+
+[CookiesBannerOverview]
+description = "We would like to <a href=\"/cookies\">use cookies to collect information</a> about how you use <strong>ons.gov.uk</strong>."
+one = "We would like to <a href=\"/cookies\">use cookies to collect information</a> about how you use <strong>ons.gov.uk</strong>."
+
+[CookiesBannerWhyWeUse]
+description = "We use this information to make the website work as well as possible and improve our services."
+one = "We use this information to make the website work as well as possible and improve our services."
+
+[CookiesBannerAcceptAllAction]
+description = "Accept all cookies"
+one = "Accept all cookies"
+
+[CookiesBannerSetPreferencesAction]
+description = "Set cookie preferences"
+one = "Set cookie preference"
+other = "Set cookie preferences"
+
+[CookiesBannerSuccess]
+description = "You’ve accepted all cookies. You can <a href=\"/cookies\">change your cookie settings</a> at any time."
+one = "You’ve accepted all cookies. You can <a href=\"/cookies\">change your cookie settings</a> at any time."
+
+[CookiesBannerHide]
+description = "Hide"
+one = "Hide"
+
+[CookiesPreferencesSaved]
+description = "We have saved your cookie preferences."
+one = "We have saved your cookie preference."
+other = "We have saved your cookie preferences."
+
+[CookiesPreferencesSavedAmend]
+description = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
+one = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
+other = "Should you ever wish to amend them, visit <strong><a href=\"/cookies\">ons.gov.uk/cookies</a></strong>."
+
+[Covid19BannerTitle]
+description = "Coronafeirws (COVID-19)"
+one = "Coronafeirws (COVID-19)"
+
+[Covid19BannerBody]
+description = "Get the latest data and analysis on coronavirus (COVID-19) in the UK."
+one = "Y data a’r dadansoddiad diweddaraf ar y coronafeirws."
+
+[CensusBannerBody]
+description = "Discover how our census statistics help paint a picture of the nation and how we live."
+one = "Discover how our census statistics help paint a picture of the nation and how we live."
+
+[InFocus]
+description = "In focus"
+one = "In focus"
+
+[ExperiencingIssues]
+description = "We are currently experiencing issues displaying this data."
+one = "We are currently experiencing issues displaying this data."
+
+[RefreshOrVisitTimeseriesTool]
+description = "Refresh the page or visit our <a href=\"/timeseriestool\">time series explorer</a> for the latest figures."
+one = "Refresh the page or visit our <a href=\"/timeseriestool\">time series explorer</a> for the latest figures."
+
+# Around The ONS - Homepage Section
+[AroundTheONS]
+description = "Around the ONS"
+one = "Around the ONS"
+
+[LocalStatisticsTitle]
+description = "Local statistics"
+other = "Local statistics"
+
+[LocalStatisticsSummary]
+description = "Where to find statistics covering specific areas."
+other = "Where to find statistics covering specific areas."
+
+[OurDataStrategyTitle]
+description = "Our data strategy"
+other = "Our data strategy"
+
+[OurDataStrategySummary]
+description = "How we use and manage data to provide statistics for the public."
+other = "How we use and manage data to provide statistics for the public."
+
+[SecureResearchServiceTitle]
+description = "Secure Research Service"
+other = "Secure Research Service"
+
+[SecureResearchServiceSummary]
+description = "Find out how ONS secure data could help your research project."
+other = "Find out how ONS secure data could help your research project."
+
+[OtherGovtStatisticsTitle]
+description = "Other government statistics"
+other = "Other government statistics"
+
+[OtherGovtStatisticsSummary]
+description = "Official Statistics available from across government."
+other = "Official Statistics available from across government."
+
+[ONSCentresTitle]
+description = "ONS Centres"
+other = "ONS Centres"
+
+[ONSCentresSummary]
+description = "Producing new analysis and insights to support key policy areas."
+other = "Producing new analysis and insights to support key policy areas."
+
+[OnPrevious]
+description = "on previous"
+one = "on previous"
+
+[LatestReleases]
+description ="Latest releases"
+one ="Latest releases"
+
+[ReleaseCalendarTileInfo]
+description = "All of our publications are listed in our release calendar."
+one = "All of our publications are listed in our release calendar."
+
+[ReleaseCalendarTilePublicationCount]
+description = "We have published"
+one = "We have published"
+
+[ReleaseCalendarTilePublicationPeriod]
+description = " statistical releases in the last 7 days."
+one = " statistical releases in the last 7 days."
+
+[OtherReleasesThisWeek]
+description = "other releases this week"
+one = "other releases this week"
+
+[AllReleases]
+description = "View all of our releases by date"
+one = "View all of our releases by date"
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Feedback Form/Form Page
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[FeedbackTitle]
+description = "{{.Metadata.Title}}"
+one = "{{.arg0}}"
+
+[FeedbackDesc]
+descriptions = "You can use the form below to ask a question, report a problem or suggest an improvement we can make to ONS.GOV.UK"
+one = "You can use the form below to ask a question, report a problem or suggest an improvement to the ONS.GOV.UK team."
+
+[FeedbackTitleWhat]
+description = "What's it to do with?"
+one = "What's it to do with?"
+
+[FeedbackWhatOptSpecificPage]
+description = "This specific page"
+one = "This specific page"
+
+[FeedbackWhatEnterURL]
+description = "Enter URL or name of the page"
+one = "Enter URL or name of the page"
+
+[FeedbackWhatOptHintSpecificPage]
+description = "{{.ServiceDescription}}"
+one = "({{.arg0}})"
+
+[FeedbackWhatOptNewService]
+description = "This new service"
+one = "This new service"
+
+[FeedbackWhatOptGeneral]
+description = "The whole <abbr title=\"Office for National Statistics\">ONS</abbr> website or general feedback"
+one = "The whole ONS website or general feedback"
+
+[FeedbackTitleEntry]
+description = "What are the details?"
+one = "What are the details?"
+
+[FeedbackHintEntry]
+description = "For example, if you were searching for something, what did you type into the search box?"
+one = "For example, if you were searching for something, what did you type into the search box?"
+
+[FeedbackAlertEntry]
+description = "Write some feedback"
+one = "Write some feedback"
+
+[FeedbackTitleReply]
+description = "Do you want a reply?"
+one = "Do you want a reply?"
+
+[FeedbackDescReply]
+description = "If you'd like us to get back to you, please add your name and email address below."
+one = "If you'd like us to get back to you, please add your name and email address below."
+
+[FeedbackTitleName]
+description = "Name (optional)"
+one = "Name (optional)"
+
+[FeedbackTitleEmail]
+description = "Email (optional)"
+one = "Email (optional)"
+
+[FeedbackReplyDisclaimer]
+description = "We'll only use this to reply to your message"
+one = "We'll only use this to reply to your message."
+
+[FeedbackAlertEmail]
+description = "This is not a valid email address, correct it or delete it"
+one = "This is not a valid email address, correct it or delete it"
+
+[FeedbackSubmit]
+description = "Send feedback"
+one = "Send feedback"
+
+[FeedbackFinished]
+description = "Your feedback will help us to improve the website. We are unable to respond to all enquiries. If your matter is urgent, please <a href=\"/aboutus/contactus\">contact us</a>.<br><br>Return to <a href=\"{{.Metadata.Description}}\">{{.Metadata.Description}}"
+one = "Your feedback will help us to improve the website. We are unable to respond to all enquiries. If your matter is urgent, please <a href=\"/aboutus/contactus\">contact us</a>.<br><br>Return to <a href=\"{{.arg0}}\">{{.arg0}}"
+
+[FeedbackWholeWebsite]
+description = "The whole ONS website or general feedback"
+one = "The whole ONS website or general feedback"
+
+[FeedbackASpecificPage]
+description = "A specific page"
+one = "A specific page"
