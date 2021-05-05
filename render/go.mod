@@ -2,11 +2,11 @@ module github.com/rav-pradhan/test-modules/render
 
 go 1.13
 
-replace github.com/rav-pradhan/test-modules/render =>  /Users/ravipradhan/Documents/personal-projects/test-modules/render
+replace github.com/rav-pradhan/test-modules/render => /Users/ravipradhan/Documents/personal-projects/test-modules/render
 
 replace github.com/rav-pradhan/test-modules/render/assets => /Users/ravipradhan/Documents/personal-projects/test-modules/render/assets
 
-replace github.com/rav-pradhan/test-modules/render/models =>  /Users/ravipradhan/Documents/personal-projects/test-modules/render/models
+replace github.com/rav-pradhan/test-modules/render/models => /Users/ravipradhan/Documents/personal-projects/test-modules/render/models
 
 require (
 	github.com/BurntSushi/toml v0.3.1

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/eldeal/test-modules/render/assets"
+	"github.com/rav-pradhan/test-modules/render/assets"
 
 	"github.com/BurntSushi/toml"
 	"github.com/ONSdigital/go-ns/common"

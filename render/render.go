@@ -8,7 +8,7 @@ import (
 
 	"github.com/ONSdigital/dp-frontend-models/model"
 	"github.com/ONSdigital/log.go/log"
-	"github.com/eldeal/test-modules/render/assets"
+	"github.com/rav-pradhan/test-modules/render/assets"
 	"github.com/unrolled/render"
 	unrolled "github.com/unrolled/render"
 )
