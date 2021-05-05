@@ -1,10 +1,12 @@
-module github.com/eldeal/test-modules/render
+module github.com/rav-pradhan/test-modules/render
 
 go 1.13
 
-replace github.com/eldeal/test-modules/render => /Users/eleanor/Development/git/personal/test-modules/render
+replace github.com/rav-pradhan/test-modules/render =>  /Users/ravipradhan/Documents/personal-projects/test-modules/render
 
-replace github.com/eldeal/test-modules/render/assets => /Users/eleanor/Development/git/personal/test-modules/render/assets
+replace github.com/rav-pradhan/test-modules/render/assets => /Users/ravipradhan/Documents/personal-projects/test-modules/render/assets
+
+replace github.com/rav-pradhan/test-modules/render/models =>  /Users/ravipradhan/Documents/personal-projects/test-modules/render/models
 
 require (
 	github.com/BurntSushi/toml v0.3.1
