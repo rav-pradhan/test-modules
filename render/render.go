@@ -6,9 +6,8 @@ import (
 	"io"
 	"sync"
 
-	"github.com/ONSdigital/dp-frontend-models/model"
 	"github.com/ONSdigital/log.go/log"
-	"github.com/rav-pradhan/test-modules/render/assets"
+	"github.com/rav-pradhan/test-modules/render/models"
 	"github.com/unrolled/render"
 	unrolled "github.com/unrolled/render"
 )
@@ -22,11 +21,11 @@ type Render struct {
 // TODO: need to find a way of passing in assets from application
 // when this is instantiated so that common assets can be built
 // in the render package and custom assets can still be provided
-func New(assetsPath, siteDomain string) *Render {
+func New(assetsPath, siteDomain string, assetFn func(name string) ([]byte, error), assetNameFn func() []string) *Render {
 	return &Render{
 		client: unrolled.New(render.Options{
-			Asset:      assets.Asset,
-			AssetNames: assets.AssetNames,
+			Asset:      assetFn,
+			AssetNames: assetNameFn,
 			Layout:     "main",
 			Funcs:      []template.FuncMap{registeredFuncs},
 		}),
@@ -35,18 +34,16 @@ func New(assetsPath, siteDomain string) *Render {
 	}
 }
 
-//Page resolves the rendering of a specific pagem with a given model and template name
+//Page resolves the rendering of a specific page with a given model and template name
 func (r *Render) Page(w io.Writer, page interface{}, templateName string) {
 	ctx := context.Background()
-
 	if err := r.HTML(w, 200, templateName, page); err != nil {
-		r.JSON(w, 500, model.ErrorResponse{
+		r.JSON(w, 500, models.ErrorResponse{
 			Error: err.Error(),
 		})
 		log.Event(ctx, "failed to render template", log.Error(err), log.ERROR)
 		return
 	}
-
 	log.Event(ctx, "rendered template", log.Data{"template": templateName}, log.INFO)
 }
 

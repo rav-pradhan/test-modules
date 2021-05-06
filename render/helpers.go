@@ -9,8 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rav-pradhan/test-modules/render/assets"
-
 	"github.com/BurntSushi/toml"
 	"github.com/ONSdigital/go-ns/common"
 	"github.com/ONSdigital/log.go/log"
@@ -22,9 +20,6 @@ import (
 )
 
 const legacyDatasetURIFormat = "/file?uri=%s/%s"
-
-var bundle, _ = InitLocaleBundle()
-var localizers = InitLocalizer()
 
 var registeredFuncs template.FuncMap = template.FuncMap{
 	"humanSize":                  HumanSize,
@@ -46,8 +41,18 @@ var registeredFuncs template.FuncMap = template.FuncMap{
 	"truncateToMaximuCharacters": TruncateToMaximumCharacters,
 }
 
+var bundle *i18n.Bundle
+var localizers map[string]*i18n.Localizer
+
+// InitialiseLocalisationsHelper sets up the core and service specific localisations for use in the templates
+// with the Localise helper function
+func InitialiseLocalisationsHelper(assetFn func(name string) ([]byte, error)) {
+	bundle, _ = initLocaleBundle(assetFn)
+	localizers = initLocalizer(bundle)
+}
+
 // InitLocalizer is used to initialise the localizer
-func InitLocalizer() map[string]*i18n.Localizer {
+func initLocalizer(bundle *i18n.Bundle) map[string]*i18n.Localizer {
 	m := make(map[string]*i18n.Localizer)
 	for _, locale := range common.SupportedLanguages {
 		m[locale] = i18n.NewLocalizer(bundle, locale)
@@ -57,17 +62,21 @@ func InitLocalizer() map[string]*i18n.Localizer {
 }
 
 // InitLocaleBundle is used to initialise the locale bundle
-func InitLocaleBundle() (*i18n.Bundle, error) {
+func initLocaleBundle(assetFn func(name string) ([]byte, error)) (*i18n.Bundle, error) {
 	bundle := i18n.NewBundle(language.English)
 	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
 
+	commonLocaliseNames := []string{"core", "service"}
+
 	for _, locale := range common.SupportedLanguages {
-		filePath := "locales/active." + locale + ".toml"
-		asset, err := assets.Asset(filePath)
-		if err != nil {
-			log.Event(nil, "failed to get locale file", log.Error(err), log.ERROR)
+		for _, fileName := range commonLocaliseNames {
+			filePath := fmt.Sprintf("locales/%s.%s.toml", fileName, locale)
+			asset, err := assetFn(filePath)
+			if err != nil {
+				log.Event(nil, "failed to get locale file", log.Error(err), log.ERROR)
+			}
+			bundle.ParseMessageFileBytes(asset, filePath)
 		}
-		bundle.ParseMessageFileBytes(asset, filePath)
 	}
 
 	return bundle, nil
