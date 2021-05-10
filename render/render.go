@@ -22,6 +22,7 @@ type Render struct {
 // when this is instantiated so that common assets can be built
 // in the render package and custom assets can still be provided
 func New(assetsPath, siteDomain string, assetFn func(name string) ([]byte, error), assetNameFn func() []string) *Render {
+	InitialiseLocalisationsHelper(assetFn)
 	return &Render{
 		client: unrolled.New(render.Options{
 			Asset:      assetFn,
